@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<title>BBD SCHEDULER</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 100px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+
+<style>
+.navbar {
+    overflow: hidden  ;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: rgb(200, 0, 0);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+    </style>
+    </head>
+
+<body class="w3-black">
+  <!-- Icon Bar (Sidebar - hidden on small screens) -->
+<!-- <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center"> -->
+  <!-- Avatar image in top left corner -->
+  <!-- <img src="logo.png" style="width:100%"> -->
+  <!-- <a href="Home.html" class="w3-bar-item w3-button w3-padding-large w3-black"> -->
+    <!-- <i><img src="cal.png" width="100%"></i> -->
+    <!-- <p><b>SCHEDULE</b></p> -->
+  <!-- </a> -->
+  <!-- <a href="Bookings.html" class="w3-bar-item w3-button w3-padding-large w3-black"> -->
+    <!-- <i><img src="booking.png" width="100%"></i> -->
+    <!-- <p>BOOK A VENUE</p> -->
+  <!-- </a> -->
+<!-- </nav> -->
+
+<div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div> 
+  </div>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">SCHEDULE</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">BOOK A VENUE</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <!-- <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> John Doe.</h1>
+    <p>Photographer and Web Designer.</p>
+    <img src="/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">
+  </header> -->
+  <div class="cd-schedule loading">
+    <div class="timeline">
+      <ul>
+        <li><span>08:00</span></li>
+        <li><span>08:30</span></li>
+        <li><span>09:00</span></li>
+        <li><span>09:30</span></li>
+        <li><span>10:00</span></li>
+        <li><span>10:30</span></li>
+        <li><span>11:00</span></li>
+        <li><span>11:30</span></li>
+        <li><span>12:00</span></li>
+        <li><span>12:30</span></li>
+        <li><span>13:00</span></li>
+        <li><span>13:30</span></li>
+        <li><span>14:00</span></li>
+        <li><span>14:30</span></li>
+        <li><span>15:00</span></li>
+        <li><span>15:30</span></li>
+        <li><span>16:00</span></li>
+        <li><span>16:30</span></li>
+        <li><span>17:00</span></li>
+      </ul>
+    </div> <!-- .timeline -->
+  
+    <div class="events">
+      <ul>
+        <li class="events-group">
+          <div class="top-info"><span>Monday</span></div>
+  
+          <ul>
+            <li class="single-event" data-start="09:30" data-end="10:00" data-content="event-abs-circuit" data-event="event-1">
+              <a href="#0">
+                <em class="event-name">Meeting 1</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="11:00" data-end="12:30" data-content="event-rowing-workout" data-event="event-2">
+              <a href="#0">
+                <em class="event-name">Meeting 2</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="14:00" data-end="15:15"  data-content="event-yoga-1" data-event="event-3">
+              <a href="#0">
+                <em class="event-name">Meeting 3</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+  
+        <li class="events-group">
+          <div class="top-info"><span>Tuesday</span></div>
+  
+          <ul>
+            <li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
+              <a href="#0">
+                <em class="event-name">Meeting 4</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="11:30" data-end="13:00"  data-content="event-restorative-yoga" data-event="event-4">
+              <a href="#0">
+                <em class="event-name">Meeting 5</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="13:30" data-end="15:00" data-content="event-abs-circuit" data-event="event-1">
+              <a href="#0">
+                <em class="event-name">Meeting 6</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
+              <a href="#0">
+                <em class="event-name">Meeting 7</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+  
+        <li class="events-group">
+          <div class="top-info"><span>Wednesday</span></div>
+  
+          <ul>
+            <li class="single-event" data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4">
+              <a href="#0">
+                <em class="event-name">Meeting 297</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3">
+              <a href="#0">
+                <em class="event-name">Meeting 193</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="12:00" data-end="13:45"  data-content="event-rowing-workout" data-event="event-2">
+              <a href="#0">
+                <em class="event-name">Meeting 309</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3">
+              <a href="#0">
+                <em class="event-name">Meeting 167</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+  
+        <li class="events-group">
+          <div class="top-info"><span>Thursday</span></div>
+  
+          <ul>
+            <li class="single-event" data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1">
+              <a href="#0">
+                <em class="event-name">Meeting 298</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4">
+              <a href="#0">
+                <em class="event-name">Meeting 176</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="15:30" data-end="16:30" data-content="event-abs-circuit" data-event="event-1">
+              <a href="#0">
+                <em class="event-name">Meeting 265</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+  
+        <li class="events-group">
+          <div class="top-info"><span>Friday</span></div>
+  
+          <ul>
+            <li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
+              <a href="#0">
+                <em class="event-name">Meeting 765</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1">
+              <a href="#0">
+                <em class="event-name">Meeting 145</em>
+              </a>
+            </li>
+  
+            <li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
+              <a href="#0">
+                <em class="event-name">Meeting 112</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="event-modal">
+      <header class="header">
+        <div class="content">
+          <span class="event-date"></span>
+          <h3 class="event-name"></h3>
+        </div>
+  
+        <div class="header-bg"></div>
+      </header>
+  
+      <div class="body">
+        <div class="event-info"></div>
+        <div class="body-bg"></div>
+      </div>
+  
+      <a href="#0" class="close">Close</a>
+    </div>
+  
+    <div class="cover-layer"></div>
+  </div>
+</table>
+
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <!-- <h2 class="w3-text-light-grey">My Name</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>Some text about me. Some text about me. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p> -->
+  <!-- End Contact Section -->
+  </div>
+
+<!-- END PAGE CONTENT -->
+</div>
+<script type="module" src="./token.js"></script>
+<script src="js/modernizr.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script>
+	if( !window.jQuery ) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+</script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+</body>
+
+</html>
