@@ -381,6 +381,134 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             console.log(JSON.parse(xmlHttp.responseText));
             var jsonResponse = JSON.parse(xmlHttp.responseText);
         }
+		function find(jsonTemp)
+        {
+		
+		window.alert("find was run");
+			/*var tempObj = 		
+	
+			;
+			
+			lstOut.innerHTML = "";*/
+			//var lstOut.innerHTML = "";
+			
+			
+			var myJSON = JSON.stringify(jsonTemp);
+            var obj = JSON.parse(myJSON);
+			
+			var I;
+			for (I = 0; I < obj.value.length; I++)
+			{
+				var bookingSubject = obj.value[I].subject;
+				var bookee = obj.value[0].organizer.emailAddress.name;
+				var startMain = obj.value[I].start.dateTime;
+				var endMain = obj.value[I].end.dateTime;
+				
+				//starting
+				var startTime = startMain.slice(11,16);
+				var startDate = startMain.slice(0,10);
+				var startDay = startMain.slice(8,10);
+				
+				//ending
+				var endTime = endMain.slice(11,16);
+				var endDate = endMain.slice(0,10);
+				var endDay = endMain.slice(8,10);
+				
+				lstOut.innerHTML = lstOut.innerHTML + "Booking " + I + "<br>";
+				lstOut.innerHTML = lstOut.innerHTML + "Starting date: " + startDate + "  |  startTime: " + startTime + "<br>";
+				lstOut.innerHTML = lstOut.innerHTML + "Ending date: " + endDate + "  |  endTime: " + endTime + "<br>";
+				lstOut.innerHTML = lstOut.innerHTML + "Booking subject: " + bookingSubject + "<br>";
+				lstOut.innerHTML = lstOut.innerHTML + "Bookee: " + bookee + "<br><br>";
+				//lstOut.innerHTML = lstOut.innerHTML + "startDay: " + startDay + "  |  endDay: " + endDay + "<br>";
+				
+				var daysInbetween = (endDay - startDay) - 1;
+				lstOut.innerHTML = lstOut.innerHTML + "Days inbetween: " + daysInbetween + "<br>";
+				
+				//lstOut.innerHTML = lstOut.innerHTML + "" +  + "<br>";
+				
+				lstOut.innerHTML = lstOut.innerHTML + "<br>Internal Bookings::" + "<br>";
+				if (startDay != endDay)//multiple dates inside booking
+				{					
+					//add day 1 details (startTime :: 17h00)
+					//lstOut.innerHTML = lstOut.innerHTML + "Day 1:" + "<br>";
+					if (dayToColumn(startDate) != -1)
+					{
+						lstOut.innerHTML = lstOut.innerHTML + "Date: " + startDate + ",   " + startTime + " - 17:00" + "<br>";
+						
+					}
+					//add inbetween days (08h00 :: 17h00)
+					var K;
+					for (K = 1; K <= daysInbetween; K++)
+					{
+						//lstOut.innerHTML = lstOut.innerHTML + "Day " + (K + 1) + ":" + "<br>";
+						var usedDate = addDays(startDate,K);
+						if (dayToColumn(usedDate) != -1)
+						{
+							lstOut.innerHTML = lstOut.innerHTML + "Date: " + usedDate  + ",   08:00 - 17:00" + "<br>";
+						}
+					}
+					//add last day (08h00 :: endTime)
+					//lstOut.innerHTML = lstOut.innerHTML + "Day " + (K + 1) + "<br>";
+					if (dayToColumn(endDate) != -1)
+					{
+						lstOut.innerHTML = lstOut.innerHTML + "Date: " + endDate  + ",   08:00 - " + endTime + "<br>";
+					}
+				}
+				else//booking happens in 1 day
+				{
+					lstOut.innerHTML = lstOut.innerHTML + "Day 1:" + "<br>";
+					lstOut.innerHTML = lstOut.innerHTML + "Date: " + startDate + ",   " + startTime + " - " + endTime + "<br>";
+				}
+				
+				lstOut.innerHTML = lstOut.innerHTML + "<br>";
+			}
+			
+			var table = document.getElementById("mainTable");
+			
+			var today = "2018-07-08";
+			lstOut.innerHTML = lstOut.innerHTML + "Day of " + today + ":   " + dayToColumn(today) + "<br>";
+			
+			
+			//window.alert(lstOut.innerHTML);
+        }
+		
+		function addDays(date, days)
+		{
+			var result = new Date(date);
+			result.setDate(result.getDate() + days);
+			return (result.toISOString()).slice(0,10);
+		}
+		
+		function dayToColumn(date)
+		{
+			var res = new Date(date);
+			var theDay = (res.toString()).slice(0,3);
+			
+			switch (theDay)
+			{
+				case "Mon":
+					return 0;
+					break;
+				case "Tue":
+					return 1;
+					break;
+				case "Wed":
+					return 2;
+					break;
+				case "Thu":
+					return 3;
+					break;
+				case "Fri":
+					return 4;
+					break;
+				default:
+					return -1;
+					break;
+			}
+			
+			//return theDay;
+			
+		}
     </script>
 </body>
 
